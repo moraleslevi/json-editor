@@ -7396,6 +7396,18 @@ JSONEditor.defaults.templates.hogan = function() {
   };
 };
 
+JSONEditor.defaults.templates.lodash = function() {
+  if(!window._) return false;
+
+  return {
+    compile: function(template) {
+      return function(context) {
+        return window._.template(template)(context);
+      };
+    }
+  };
+};
+
 JSONEditor.defaults.templates.markup = function() {
   if(!window.Mark || !window.Mark.up) return false;
 
